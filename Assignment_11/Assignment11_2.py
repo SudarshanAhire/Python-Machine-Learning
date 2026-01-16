@@ -13,7 +13,7 @@ def main():
 
     No = int(input("Enter Number : "))
     Result = CountDigit(No)
-    print(Result)
+    print("Count of digits : ", Result)
 
 if __name__ == "__main__":
     main()

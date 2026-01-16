@@ -14,7 +14,7 @@ def main():
     No = int(input("Enter Number : "))
 
     Result = DigitSum(No)
-    print(Result) 
+    print("Sum of digits : ", Result) 
 
 if __name__ == "__main__":
     main()
