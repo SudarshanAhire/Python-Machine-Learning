@@ -1,8 +1,8 @@
 def Factorial(No):
-    if No == 0 or No == 1:
-        return 1
-    
-    Result = No * Factorial(No-1) 
+    Result = 1
+
+    for i in range(1, No+1):
+        Result = Result * i
 
     return Result 
 
