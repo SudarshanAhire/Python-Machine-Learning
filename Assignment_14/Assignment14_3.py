@@ -1,5 +1,5 @@
 
-Greater = lambda No1, No2 : No1 > No2
+Greater = lambda No1, No2 : No1 if No1 > No2 else No2
 
 def main():
     No1 = 0
@@ -10,10 +10,7 @@ def main():
 
     Ret = Greater(No1, No2)
 
-    if(Ret == True):
-        print("Greater number is ", No1)
-    else:
-        print("Greater number is ", No2)
+    print("Greater number is :", Ret)
 
 if __name__ == "__main__":
     main()
