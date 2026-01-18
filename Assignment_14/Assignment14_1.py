@@ -3,7 +3,7 @@ Square = lambda No : No * No
 
 def main():
     No = 0
-    
+
     No = int(input("Enter number : "))
 
     Ret = Square(No)
