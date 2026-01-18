@@ -1,0 +1,13 @@
+
+ChkEven = lambda No : (No % 2 == 0)
+
+def main():
+    Data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    FData = list(filter(ChkEven, Data))
+    print("List of Even is : ", FData)
+
+    print("Count of Even numbers in list :", len(FData))
+
+if __name__ == "__main__":
+    main()
