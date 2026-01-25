@@ -1,27 +1,30 @@
 import threading
 
 def LowerCase(Name):
-    Count = 0
-
-    for i in range(len(Name)):
-        if str(i) >= str(a) and str(i) <= str(z):
-            Count = Count + 1
-
-    print("Small chars : ", Count)
+    Count = sum(1 for ch in Name if ch.islower())
+    print("Lowercase count :", Count)
+    print("LowerCase Thread ID :", threading.get_ident())
+    print("Thread Name :", threading.current_thread().name)
 
 def UpperCase(Name):
-    pass
+    Count = sum(1 for ch in Name if ch.isupper())
+    print("Uppercase count :", Count)
+    print("UpperCase Thread ID :", threading.get_ident())
+    print("Thread Name :", threading.current_thread().name)
 
 def NumericDigit(Name):
-    pass
+    Count = sum(1 for ch in Name if ch.isdigit())
+    print("Numeric digit count :", Count)
+    print("Numeric Digit Thread ID :", threading.get_ident())
+    print("Thread Name :", threading.current_thread().name)
 
 def main():
     Name =  None
     Name = input("Enter name : ")
 
-    Small = threading.Thread(target=LowerCase, args=(Name,))
-    Capital = threading.Thread(target=UpperCase, args=(Name,))
-    Digits = threading.Thread(target=NumericDigit, args=(Name))
+    Small = threading.Thread(target=LowerCase, args=(Name,), name = "Small")
+    Capital = threading.Thread(target=UpperCase, args=(Name,), name = "Capital")
+    Digits = threading.Thread(target=NumericDigit, args=(Name,), name = "Digits")
 
     Small.start()
     Capital.start()

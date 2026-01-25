@@ -21,13 +21,13 @@ def NonPrime(Value):
 def DisplayPrime(Data):
     for i in range(len(Data)):
         if Prime(Data[i]) == True:
-            print("Prime Numbers :", Data[i])
+            print(Data[i])
 
 
 def DisplayNonPrime(Data):
-    for i in range(len(Data))
+    for i in range(len(Data)):
         if NonPrime(Data[i]) == True:
-            print("NonPrime numbers :", Data[i])
+            print(Data[i])
 
 def main():
     Data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
