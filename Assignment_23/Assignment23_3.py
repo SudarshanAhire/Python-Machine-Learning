@@ -1,7 +1,7 @@
 class Numbers:
 
-    def __init__(self):
-        self.Value = int(input("Enter number : "))
+    def __init__(self, A):
+        self.Value = A
 
     def ChkPrime(self):
         for i in range(2, self.Value):
@@ -37,8 +37,10 @@ class Numbers:
 
         return FactorSum
     
+    
+Number = int(input("Enter Number : "))
 
-obj1 = Numbers()
+obj1 = Numbers(Number)
 print("Number is prime :", obj1.ChkPrime())
 print(obj1.ChkPerfect())
 obj1.Factors()
@@ -47,7 +49,9 @@ print("Sum of factors :", obj1.SumFactors())
 
 print()
 
-obj2 = Numbers()
+Number = int(input("Enter number : "))
+
+obj2 = Numbers(Number)
 print("Number is prime :", obj2.ChkPrime())
 print(obj2.ChkPerfect())
 obj2.Factors()
