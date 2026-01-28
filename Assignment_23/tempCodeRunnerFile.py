@@ -1,1 +1,0 @@
-        # FSum = self.SumFactors()
