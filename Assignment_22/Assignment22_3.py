@@ -18,10 +18,17 @@ class Arithmetic:
         return self.Value1 * self.Value2
     
     def Division(self):
-        if(self.Value2 != 0):
+        try:
             return self.Value1 / self.Value2
         
-        return "Cannot divided by zero"
+        except ZeroDivisionError as zobj:
+            return zobj
+
+        # if(self.Value2 != 0):
+        #     return self.Value1 / self.Value2
+        
+        # return "Cannot divided by zero"
+        
 
 
 obj1 = Arithmetic()

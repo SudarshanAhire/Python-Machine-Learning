@@ -7,7 +7,7 @@ class Circle:
         self.Circumference = 0.0 
 
     def Accept(self):
-        self.Radius = float(input("Enter radius : "))
+        self.Radius = float(input("Enter radius of circle : "))
 
     def CalculateArea(self):
         self.Area = Circle.PI * self.Radius * self.Radius

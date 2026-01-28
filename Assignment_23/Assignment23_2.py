@@ -27,10 +27,18 @@ class BankAccount:
         print("ROI on balance :", Interest)
     
 
-obj1 = BankAccount("Sudarshan", 30000)
+obj1 = BankAccount("Sudarshan Ahire", 30000)
 obj1.Display()
 obj1.Deposit()
 obj1.Display()
 obj1.Withdraw()
 obj1.Display()
 obj1.CalculateInterest()
+
+obj2 = BankAccount("Darshan Ahire", 100000)
+obj2.Display()
+obj2.Deposit()
+obj2.Display()
+obj2.Withdraw()
+obj2.Display()
+obj2.CalculateInterest()

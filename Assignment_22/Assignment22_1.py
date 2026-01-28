@@ -6,12 +6,12 @@ class Demo:
         self.No2 = B
 
     def Fun(self):
-        print("Inside fun")
+        print("Inside instance method fun")
         print("Value of No1 :", self.No1)
         print("Value of No2 :", self.No2)
 
     def Gun(self):
-        print("Inside gun")
+        print("Inside instance method gun")
         print("Value of No1 :", self.No1)
         print("Value of No2 :", self.No2)
 
