@@ -4,6 +4,9 @@ class Numbers:
         self.Value = A
 
     def ChkPrime(self):
+        if self.Value < 2:
+            return False
+
         for i in range(2, self.Value):
             if self.Value % i == 0:
                 return False
@@ -11,6 +14,9 @@ class Numbers:
         return True
     
     def ChkPerfect(self):
+        if self.Value < 1:
+            return "Number is not perfect"
+        
         FSum = 0
         for i in range(1, self.Value):
             if self.Value % i == 0:
