@@ -1,7 +1,7 @@
 class Numbers:
 
-    def __init__(self, A):
-        self.Value = A
+    def __init__(self):
+        self.Value = int(input("Enter number : "))
 
     def ChkPrime(self):
         for i in range(2, self.Value):
@@ -11,20 +11,19 @@ class Numbers:
         return True
     
     def ChkPerfect(self):
-        # FSum = 0
-        # for i in range(1, self.Value):
-        #     if self.Value % i == 0:
-        #         FSum = FSum + i
-
-        FSum = self.SumFactors()
+        FSum = 0
+        for i in range(1, self.Value):
+            if self.Value % i == 0:
+                FSum = FSum + i
 
         if FSum == self.Value:
             return "Number is perfect"
         else:
-            return "NUmber is not perfect"
+            return "Number is not perfect"
 
 
     def Factors(self):
+        print("Factors of number : ", end=" ")
         for i in range(1, self.Value + 1):
             if self.Value % i == 0: 
                 print(i, end=" ")
@@ -32,17 +31,26 @@ class Numbers:
     def SumFactors(self):
         FactorSum = 0
 
-        for i in range(1, self.Value):
+        for i in range(1, self.Value + 1):
             if self.Value % i == 0:
                 FactorSum = FactorSum + i
 
         return FactorSum
     
 
-obj1 = Numbers(int(input("Enter number : ")))
-print(obj1.ChkPrime())
+obj1 = Numbers()
+print("Number is prime :", obj1.ChkPrime())
 print(obj1.ChkPerfect())
 obj1.Factors()
 print()
-print(obj1.SumFactors())
+print("Sum of factors :", obj1.SumFactors())
+
+print()
+
+obj2 = Numbers()
+print("Number is prime :", obj2.ChkPrime())
+print(obj2.ChkPerfect())
+obj2.Factors()
+print()
+print("Sum of factors :", obj2.SumFactors())
 
