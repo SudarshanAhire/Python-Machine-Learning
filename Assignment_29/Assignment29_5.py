@@ -1,31 +1,42 @@
-import os 
 import sys
+import os
 
-def CountOccurrences(FileName, String)
-    if(os.path.exists(FileName)):
-        Count = 0
-        fobj = open(FileName, "r")
+def CountOccurences(FileName, String):
+    Ret = False
+    Count = 0
 
-        Ret = fobj.read()
+    Ret = os.path.exists(FileName)
 
-        
-        if(Ret == String):
-            Count = Count + 1
-
-        return Count
+    if(Ret == False):
+        print("No such file in this directory")
+        return
     
-    else:
-        print("No such file exists")
+    fobj = open(FileName, "r")
 
+    Data = fobj.read()
 
+    fobj.close()
+
+    Count = Data.count(String)
+
+    return Count
 
 def main():
+
     FileName = sys.argv[1]
     String = sys.argv[2]
 
-    Ret = CountOccurrences(FileName, String)
-    print(Ret)
+    Count = CountOccurences(FileName, String)
 
-    
+    print(f"{Count} times {String} appears in {FileName}")
+
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+

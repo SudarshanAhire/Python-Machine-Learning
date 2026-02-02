@@ -2,28 +2,34 @@ import sys
 import os
 
 def CountLines(FileName):
-    if(os.path.exists(FileName)):
-        Count = 0
+    Ret = False 
+    Count = 0
 
-        fobj = open(FileName, "r")
+    Ret = os.path.exists(FileName)
 
-        Ret = fobj.readlines() 
+    if(Ret == False):
+        print("No such file exist in this directory")
+        return
 
-        for _ in Ret:
-            Count = Count + 1
+    fobj = open(FileName, "r")
 
-        fobj.close()
+    Data = fobj.readlines() 
 
-        return Count
+    for _ in Data:
+        Count = Count + 1
 
-    else:
-        print("No such file exists")
+    fobj.close()
+
+    return Count     
+
 
 def main():
     FileName = sys.argv[1]
 
     Ret = CountLines(FileName)
-    print(f"Total number of lines in {FileName} :", Ret)
+
+    if(Ret != None):
+        print(f"Total number of lines in {FileName} :", Ret)
 
 
 if __name__ == "__main__":
