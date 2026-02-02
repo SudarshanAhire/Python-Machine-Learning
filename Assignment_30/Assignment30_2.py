@@ -2,29 +2,31 @@ import sys
 import os
 
 def CountWords(FileName):
-    if(os.path.exists(FileName))
-        Count = 0
+    Ret = False
+    Count = 0
 
-        fobj = open(FileName, "r")
+    Ret = os.path.exists(FileName)
 
-        Ret = fobj.read()
+    if(Ret == False):
+        print("No such exists in this directory")
+        return 
+    
+    fobj = open(FileName, "r")
 
-        for _ in Ret:
-            if(Ret != " "):
-                Count = Count + 1
+    Data = fobj.read()
 
-        fobj.close()
+    Count = len(Data.split())
 
-        return Count
+    fobj.close()
 
-    else:
-        print("No such file exists in directory")
+    return Count 
+    
 
 def main():
     FileName = sys.argv[1]
 
     Ret = CountWords(FileName)
-    print(Ret)
+    print(f"Total number of words in {FileName} :", Ret)
 
 if __name__ == "__main__":
     main()

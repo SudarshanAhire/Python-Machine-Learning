@@ -2,18 +2,26 @@ import sys
 import os
 
 def DisplayLine(FileName):
-    if(os.path.exists(FileName)):
-        fobj = open(FileName, "r")
+    Ret = False
 
-        Ret = fobj.readlines()
+    Ret = os.path.exists(FileName)
 
-        for line in Ret:
-            print(line)
+    if(Ret == False):
+        print("No such file exists in this directory")
+        return
+   
+    fobj = open(FileName, "r")
 
-    else:
-        print("No such file exists")
+    Data = fobj.readlines()
+
+    for line in Data:
+        print(line)
 
 def main():
+
+    if(len(sys.argv) > 2 or len(sys.argv) < 2):
+        print("Invalid number of arguments")
+        return
 
     FileName = sys.argv[1]
 

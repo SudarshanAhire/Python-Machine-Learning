@@ -2,27 +2,35 @@ import sys
 import os
 
 def CopyData(FileName1, FileName2):
-    if(os.path.exists(FileName1)):
-        fobj = open(FileName1, "r")
+    Ret = False 
 
-        Data = fobj.read()
+    Ret = ((os.path.exists(FileName1)) and (os.path.exists(FileName2)))
 
-        fobj2 = open(FileName2, "w")
+    if(Ret == False):
+        print("There is no such file in this directory")
+        return
+    
+    fobj1 = open(FileName1, "r")
 
-        fobj2.write(Data)
+    Data = fobj1.read()
 
-        fobj.close()
-        fobj2.close()
+    fobj2 = open(FileName2, "w")
 
-    else:
-        print(f"File {FileName1} is not exists")
+    fobj2.write(Data)
+
+    fobj1.close()
+    fobj2.close()
 
 def main():
+
+    if(len(sys.argv) > 3 or len(sys.argv) < 3):
+        print("Invallid Number of arguments")
+        return
+    
     FileName1 = sys.argv[1]
     FileName2 = sys.argv[2]
 
-    CopyData(FileName2, FileName2)
+    CopyData(FileName1, FileName2)
 
 if __name__ == "__main__":
     main()
-
