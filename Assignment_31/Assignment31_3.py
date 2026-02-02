@@ -38,12 +38,12 @@ def DirectoryCopy(Directory1, Directory2):
 
             if os.path.isfile(fname):
 
-                folder = os.path.join(Directory2, os.path.basename(fname))
+                NewPath = os.path.join(Directory2, os.path.basename(fname))
 
                 fobj1 = open(fname, "r")
                 Data = fobj1.read()
 
-                fobj2 = open(folder, "w")
+                fobj2 = open(NewPath, "w")
 
                 fobj2.write(Data)
 
