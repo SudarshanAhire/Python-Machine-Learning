@@ -1,8 +1,9 @@
 --------------------------------------------------
-This is the log file created by python
-This is a duplicate file identifier script
+This is the log file created using python
+This is a for delete duplicate files
 --------------------------------------------------
-Duplicate file : Demo\Python.txt
-Total duplicate files :1
-This log file is created at : Wed Feb  4 10:53:45 2026
+Deleted file : Demo\Demo.txt
+Deleted file : Demo\Python.txt
+Total duplicate files :2
+This log file is created at : Wed Feb  4 12:24:07 2026
 --------------------------------------------------
