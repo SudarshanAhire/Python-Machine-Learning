@@ -1,6 +1,7 @@
 import sys
 import os
 import hashlib
+import time
 
 def CalculateCheckSum(fname):
     fobj = open(fname, "rb")
@@ -18,10 +19,10 @@ def CalculateCheckSum(fname):
     return hobj.hexdigest()
 
 
-def DirectoryDuplicate(Directory):
+def FindDuplicate(Directory):
     Ret = False
 
-    Ret = os.apth.exists(Directory)
+    Ret = os.path.exists(Directory)
 
     if(Ret == False):
         print("There is no such directory exists")
@@ -37,12 +38,12 @@ def DirectoryDuplicate(Directory):
     
     for FolderName, SubFolderName, FileName in os.walk(Directory):
         for fname in FileName:
-            fname = os.path.join(FolderName, FileName)
+            fname = os.path.join(FolderName, fname)
 
             CheckSum = CalculateCheckSum(fname)
 
-            if CheckSum in MyDict.values():
-                MyDict[CheckSum].apppend(fname)
+            if CheckSum in MyDict:
+                MyDict[CheckSum].append(fname)
             else:
                 MyDict[CheckSum] = [fname]
 
@@ -50,8 +51,38 @@ def DirectoryDuplicate(Directory):
     return MyDict
 
 
-def FilterDuplicate(MyDict):
-    pass    
+def DisplayDuplicate(Directory):
+    MyDict = FindDuplicate(Directory)
+
+    Result = list(filter(lambda x: len(x) > 1, MyDict.values()))  
+    
+    Border = "-"*50
+    timestamp = time.ctime()
+
+    fobj = open("Log.txt", "w")
+
+    fobj.write(Border+"\n")
+    fobj.write("This is the log file created by python\n")
+    fobj.write("This is a duplicate file identifier script\n")
+    fobj.write(Border+"\n")
+
+    Count = 0
+    Cnt = 0
+
+    for value in Result:
+        for subvalue in value:
+            Count = Count + 1
+            if(Count > 1):
+                fobj.write("Duplicate file : "+subvalue+"\n")
+                Cnt = Cnt + 1
+        Count = 0
+
+    fobj.write("Total duplicate files :"+str(Cnt)+"\n")
+    fobj.write("This log file is created at : "+timestamp+"\n")
+    fobj.write(Border+"\n")
+        
+    fobj.close()
+
 
 def main():
 
@@ -61,8 +92,8 @@ def main():
     
     Directory = sys.argv[1]
 
-    DirectoryDuplicate(Directory)
-
+    DisplayDuplicate(Directory)
+   
 
 if __name__ == "__main__":
     main()
