@@ -51,6 +51,7 @@ def FindDuplicate(Directory):
 
 
 def DirectoryDuplicateRemovel(Directory):
+    start_time = time.time()
     
     MyDict = FindDuplicate(Directory)
 
@@ -79,7 +80,12 @@ def DirectoryDuplicateRemovel(Directory):
 
         Count = 0
 
+    end_time = time.time()
+
+    Execution_time = end_time - start_time
+
     fobj.write("Total duplicate files :"+str(Cnt)+"\n")
+    fobj.write("Execution time : "+str(Execution_time)+"\n")
     fobj.write("This log file is created at : "+timestamp+"\n")
     fobj.write(Border+"\n")
         

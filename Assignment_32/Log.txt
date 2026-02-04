@@ -2,8 +2,12 @@
 This is the log file created using python
 This is a for delete duplicate files
 --------------------------------------------------
+Deleted file : Demo\Demo.cpp
+Deleted file : Demo\Demo.py
 Deleted file : Demo\Demo.txt
-Deleted file : Demo\Python.txt
-Total duplicate files :2
-This log file is created at : Wed Feb  4 12:24:07 2026
+Deleted file : Demo\Demo1.py
+Deleted file : Demo\Demo1.txt
+Total duplicate files :5
+Execution time : 0.003549337387084961
+This log file is created at : Wed Feb  4 13:48:48 2026
 --------------------------------------------------
