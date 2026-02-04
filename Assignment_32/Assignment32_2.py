@@ -20,19 +20,6 @@ def CalculateCheckSum(fname):
 
 
 def FindDuplicate(Directory):
-    Ret = False
-
-    Ret = os.path.exists(Directory)
-
-    if(Ret == False):
-        print("There is no such directory exists")
-        return 
-    
-    Ret = os.path.isdir(Directory)
-
-    if(Ret == False):
-        print("This is not a directory")
-        return
     
     MyDict = {}
     
@@ -52,6 +39,20 @@ def FindDuplicate(Directory):
 
 
 def DisplayDuplicate(Directory):
+    Ret = False
+
+    Ret = os.path.exists(Directory)
+
+    if(Ret == False):
+        print("There is no such directory exists")
+        return 
+    
+    Ret = os.path.isdir(Directory)
+
+    if(Ret == False):
+        print("This is not a directory")
+        return
+    
     MyDict = FindDuplicate(Directory)
 
     Result = list(filter(lambda x: len(x) > 1, MyDict.values()))  

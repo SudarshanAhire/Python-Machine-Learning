@@ -19,20 +19,7 @@ def CalculateCheckSum(fname):
     return hobj.hexdigest()
 
 
-def FindDuplicate(Directory):
-    Ret = False
-
-    Ret = os.path.exists(Directory)
-
-    if(Ret == False):
-        print("No such directory exists")
-        return 
-    
-    Ret = os.path.isdir(Directory)
-
-    if(Ret == False):
-        print("This is not a directory")
-        return 
+def FindDuplicate(Directory): 
     
     Duplicate = {}
     
@@ -51,6 +38,19 @@ def FindDuplicate(Directory):
 
 
 def DirectoryDuplicateRemovel(Directory):
+    Ret = False
+
+    Ret = os.path.exists(Directory)
+
+    if(Ret == False):
+        print("No such directory exists")
+        return 
+    
+    Ret = os.path.isdir(Directory)
+
+    if(Ret == False):
+        print("This is not a directory")
+        return
     
     MyDict = FindDuplicate(Directory)
 

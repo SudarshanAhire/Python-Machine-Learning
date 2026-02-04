@@ -20,19 +20,6 @@ def CalculateCheckSum(fname):
 
 
 def FindDuplicate(Directory):
-    Ret = False
-
-    Ret = os.path.exists(Directory)
-
-    if(Ret == False):
-        print("No such directory exists")
-        return 
-    
-    Ret = os.path.isdir(Directory)
-
-    if(Ret == False):
-        print("This is not a directory")
-        return 
     
     Duplicate = {}
     
@@ -52,6 +39,20 @@ def FindDuplicate(Directory):
 
 def DirectoryDuplicateRemovel(Directory):
     start_time = time.time()
+
+    Ret = False
+
+    Ret = os.path.exists(Directory)
+
+    if(Ret == False):
+        print("No such directory exists")
+        return 
+    
+    Ret = os.path.isdir(Directory)
+
+    if(Ret == False):
+        print("This is not a directory")
+        return 
     
     MyDict = FindDuplicate(Directory)
 
@@ -100,7 +101,13 @@ def main():
     
     Directory = sys.argv[1]
 
+    st = time.time()
+
     DirectoryDuplicateRemovel(Directory)
+
+    et = time.time()
+
+    print(et - st)
 
 if __name__ == "__main__":
     main()
