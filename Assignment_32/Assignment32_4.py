@@ -107,7 +107,5 @@ def main():
 
     et = time.time()
 
-    print(et - st)
-
 if __name__ == "__main__":
     main()

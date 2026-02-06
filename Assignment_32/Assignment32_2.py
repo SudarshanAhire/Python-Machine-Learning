@@ -59,7 +59,7 @@ def DisplayDuplicate(Directory):
     
     Border = "-"*50
     timestamp = time.ctime()
-
+    
     fobj = open("Log.txt", "w")
 
     fobj.write(Border+"\n")

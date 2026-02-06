@@ -1,3 +1,5 @@
+# python Assignment32_1.py Demo
+
 import sys
 import os
 import hashlib
@@ -44,6 +46,7 @@ def main():
 
     if(len(sys.argv) != 2):
         print("Invalid number of arguments")
+        return
 
     Directory = sys.argv[1]
 
