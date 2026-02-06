@@ -1,4 +1,5 @@
 # DirectoryFileSearch.py "Demo" ".txt"
+
 import sys
 import os
 import time
@@ -35,7 +36,6 @@ def DirectoryScanner(Directory, Extension):
 
             if(fname.endswith(Extension)):
                 txtExtensionFileCount = txtExtensionFileCount + 1
-                print(fname)
                 fobj.write(fname+"\n")
 
     fobj.write("Total files scanned :"+str(FileCount)+"\n")
@@ -47,10 +47,6 @@ def DirectoryScanner(Directory, Extension):
 
 
 def main():
-    Border = "-"*50
-    print(Border)
-    print("--------------- Automation Script ----------------")
-    print(Border)
 
     if(len(sys.argv) != 3):
         print("Invalid number of arguments")
@@ -60,10 +56,6 @@ def main():
     Extension = sys.argv[2]
 
     DirectoryScanner(Directory, Extension)
-
-    print(Border)
-    print("------------- Automation Script End --------------")
-    print(Border)
 
 if __name__ == "__main__":
     main()

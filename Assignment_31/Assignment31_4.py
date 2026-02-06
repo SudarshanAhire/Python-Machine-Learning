@@ -1,3 +1,5 @@
+# python Assignment31_4.py Demo Hello .txt   
+
 import sys
 import os
 import time
@@ -56,11 +58,6 @@ def DirectoryCopyExt(Directory1, Directory2, Extension):
 
 def main():
 
-    Border = "-"*50
-    print(Border)
-    print("------------- Python Automaton Script ------------")
-    print(Border)
-
     if(len(sys.argv) != 4):
         print("Invalid number of arguments")
         return
@@ -70,10 +67,6 @@ def main():
     Extension = sys.argv[3] 
 
     DirectoryCopyExt(Directory1, Directory2, Extension)
-
-    print(Border)
-    print("----------- Python Automaton Script End ----------")
-    print(Border)
 
 if __name__ == "__main__":
     main()

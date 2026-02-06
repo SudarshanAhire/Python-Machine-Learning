@@ -1,3 +1,5 @@
+# python Assignment31_3.py Demo Temp
+
 import sys
 import os
 import time
@@ -34,8 +36,7 @@ def DirectoryCopy(Directory1, Directory2):
         for fname in FileName:
             fname = os.path.join(FolderName, fname)
             FileCount = FileCount + 1
-            print(fname)
-
+            
             if os.path.isfile(fname):
 
                 NewPath = os.path.join(Directory2, os.path.basename(fname))
@@ -58,11 +59,6 @@ def DirectoryCopy(Directory1, Directory2):
                 
 
 def main():
-
-    Border = "-"*50
-    print(Border)
-    print("------------- Python Automaton Script ------------")
-    print(Border)
     
     if(len(sys.argv) != 3):
         print("Invalid number of arguments")
@@ -72,10 +68,6 @@ def main():
     Directory2 = sys.argv[2]
 
     DirectoryCopy(Directory1, Directory2)
-
-    print(Border)
-    print("----------- Python Automaton Script End ----------")
-    print(Border)
 
 if __name__ == "__main__":
     main()

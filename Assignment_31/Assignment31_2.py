@@ -1,3 +1,5 @@
+# python Assignment31_2.py Demo .doc .py
+
 import sys
 import os
 import time
@@ -38,8 +40,6 @@ def DirectoryRename(Directory, Extension1, Extension2):
                 file, ext = os.path.splitext(fname)
                 NewName = file + Extension2
                 os.rename(fname, NewName)
-                print(fname)
-                print(NewName)
 
     fobj.write("Total files scanned :"+str(FileCount)+"\n")
     fobj.write("Total files extension changed :"+str(ChangeFileCount)+"\n")
@@ -50,11 +50,6 @@ def DirectoryRename(Directory, Extension1, Extension2):
                 
 
 def main():
-
-    Border = "-"*50
-    print(Border)
-    print("------------- Python Automaton Script ------------")
-    print(Border)
     
     if(len(sys.argv) != 4):
         print("Invalid number of arguments")
@@ -66,9 +61,6 @@ def main():
 
     DirectoryRename(Directory, Extension1, Extension2)
 
-    print(Border)
-    print("----------- Python Automaton Script End ----------")
-    print(Border)
 
 if __name__ == "__main__":
     main()
