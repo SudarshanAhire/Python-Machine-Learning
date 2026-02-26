@@ -21,30 +21,58 @@ def main():
     X = df[features]
     Y = df["FinalResult"]
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 
-    model = DecisionTreeClassifier(
+    model1 = DecisionTreeClassifier(
         criterion="gini",
         max_depth=3,
-        random_state=42
+        random_state=0
     )
-    # 83.33333333333334
-    # 83.33333333333334
-    #  100.0
 
-    model.fit(X_train, Y_train)
+    model1.fit(X_train, Y_train)
 
-    Y_pred = model.predict(X_test)
+    Y_pred = model1.predict(X_test)
 
     Accuracy = accuracy_score(Y_pred, Y_test)
 
     print(Border)
-    print("Accuracy of the model is :", Accuracy*100)
+    print("Accuracy of model1 with random_state=0 :", Accuracy*100)
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=10)
+
+    model2 = DecisionTreeClassifier(
+        criterion="gini",
+        max_depth=3,
+        random_state=10
+    )
+
+    model2.fit(X_train, Y_train)
+
+    Y_pred = model2.predict(X_test)
+
+    Accuracy = accuracy_score(Y_pred, Y_test)
 
     print(Border)
-    print("If randon_state=0 then accuracy is 83.33333333333334")
-    print("If random_state=10 then accuracy is 83.33333333333334")
-    print("If random_state=42 then accuracy is 100.0")
+    print("Accuracy of model2 with random_state=10 :", Accuracy*100)
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+    model3 = DecisionTreeClassifier(
+        criterion="gini",
+        max_depth=3,
+        random_state=42
+    )
+
+    model3.fit(X_train, Y_train)
+
+    Y_pred = model3.predict(X_test)
+
+    Accuracy = accuracy_score(Y_pred, Y_test)
+
+    print(Border)
+    print("Accuracy of model3 with random_state=42 :", Accuracy*100)
+
+    print(Border)
     print("random state 0 and 10 gives same model accuracy while 42 gives 100 accuracy.")
 
     print(Border)

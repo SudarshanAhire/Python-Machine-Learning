@@ -3,11 +3,6 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 import seaborn as sns 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import (
-    accuracy_score,
-    confusion_matrix,
-    ConfusionMatrixDisplay
-)
 
 def main():
     Dataset = "student_performance_ml.csv"

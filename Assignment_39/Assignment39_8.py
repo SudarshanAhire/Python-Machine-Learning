@@ -8,7 +8,7 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
-Border = "-"*40
+Border = "-"*100
 
 #################################################################################################
 # Step 1 - Load the dataset
@@ -113,7 +113,6 @@ model = DecisionTreeClassifier(
 
 model.fit(X_train, Y_train)
 
-
 print("Model training completed")
 
 
@@ -145,7 +144,7 @@ print(Border)
 print("Step 7 - Accuracy Calculation")
 print(Border)
 
-Accuracy = accuracy_score(Y_pred, Y_test)
+Accuracy = accuracy_score(Y_test, Y_pred)
 print("Accuracy of model is :", Accuracy*100)
 
 #################################################################################################
@@ -167,6 +166,11 @@ print(cm)
 
 print(Border)
 print("Step 8 - Final Conclusion")
+print(Border)
+
+print("The Decision Tree model was successfully trained and evaluated.")
+print("The model achieved an accuracy of:", Accuracy*100, "%")  
+
 print(Border)
 
 

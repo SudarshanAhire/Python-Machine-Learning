@@ -29,17 +29,17 @@ def main():
 
     model.fit(X_train, Y_train)
 
-    Y_pred = model.predict(X_train)
-    Y_pred1 = model.predict(X_test)
+    Y_train_pred = model.predict(X_train)
+    Y_test_pred = model.predict(X_test)
 
 
     # Accu_Score = accuracy_score(Y_pred, Y_test)
     
-    Training_Accuracy = accuracy_score(Y_pred, Y_train)
-    Testing_Accuracy = accuracy_score(Y_pred1, Y_test)
+    Training_Accuracy = accuracy_score(Y_train, Y_train_pred)
+    Testing_Accuracy = accuracy_score(Y_test, Y_test_pred)
 
-    print(Training_Accuracy*100)
-    print(Testing_Accuracy*100)
+    print("Training accuracy :", Training_Accuracy*100)
+    print("Testing accuracy :", Testing_Accuracy*100)
     
 if __name__ == "__main__":
     main()

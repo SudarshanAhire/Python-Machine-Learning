@@ -32,6 +32,10 @@ def main():
 
     model.fit(X_train, Y_train)
 
+    Y_pred = model.predict(X_test)
+
+    Accuracy = accuracy_score(Y_test, Y_pred)
+    
     plt.figure(figsize=(8, 5))
     plot_tree(
         model,
