@@ -14,21 +14,19 @@ def main():
     Study_Hours = int(input("Enter study hours : "))
     Attendance_percentage = int(input("Enter Attendance : "))
 
-    new_record = {'Study Hours' : Study_Hours, 'Attendance' : Attendance_percentage}
-
-    df = pd.read_csv(Dataset)
-    X = df['Study Hours', "Attendance"]
+    df = pd.DataFrame(Dataset)
+    X = df[['Study Hours', "Attendance"]]
     Y = df['Result']
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
 
-    model = KNeighborsClassifier(n_neighbors=2)
+    model = KNeighborsClassifier(n_neighbors=1)
 
     model.fit(X_train, Y_train)
 
-    Y_pred = model.predict()
+    Y_pred = model.predict([[Study_Hours, Attendance_percentage]])
 
-    print(Y_pred)
+    print(f"Predicted class : {Y_pred}")
 
 if __name__ == "__main__":
     main()
