@@ -37,8 +37,6 @@ def main():
     x = np.linspace(1, 6, n)
     y = C + m * x
 
-    # plt.figure(figsize=(8, 5))
-
     plt.plot(x, y, color = "g", label = "Regression Line")
 
     plt.scatter(X, Y, color = 'r', label = "SCatter Plot")
