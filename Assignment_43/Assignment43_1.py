@@ -1,68 +1,187 @@
 import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsClassifier
+# from sklearn.metrics import accuracy_score
 
-def main():
-    Border = "-"*50
+def CheckAccuracy(Y_test, Y_pred):
+    Y_Test = list(Y_test)
+    correct = 0
+    total = len(Y_test)
 
-    ##########################################################
-    # Step 1 - Get Data
-    ##########################################################
-    
-    df = pd.read_csv("Advertising.csv")
+    for i in range(total):
+        if Y_Test[i] == Y_pred[i]:
+            correct += 1
 
-    ###########################################################
-    # Step 2 - Cleaning, preparation and Manipulation of Data
-    ###########################################################
+    accuracy = correct / total
+    return accuracy
 
+def PlayPredictor(FilePath):
+    Border = "-"*40
+
+    #---------------------------------------------------
+    # Step 1 - Load Dataset
+    #---------------------------------------------------
     print(Border)
-    print("First five records in dataset :")
+    print("Step 1 - Load Dataset")
+    print(Border)
+
+    df = pd.read_csv(FilePath)
+
+    print("Few records from dataset :")
     print(df.head())
+
+    #---------------------------------------------------
+    # Step 2 - Remove unwanted Columns
+    #---------------------------------------------------
+    print(Border)
+    print("Step 2 - Remove unwanted columns")
     print(Border)
 
-    print("Shape of the dataset :", df.shape)
-    print(Border)
+    print("Shpae of dataset before removel :", df.shape)
 
-    print("Column Names :", list(df.columns))
-    print(Border)
+    if 'Unnamed: 0' in df.columns:
+        df.drop(columns=['Unnamed: 0'], inplace=True)
 
-    print("Statistical Report of Dataset :")
-    print(df.describe())
+    print("Shape of dataset after Removel :", df.shape)
 
     print(Border)
-    print("Count of null values of columns :")
+    print("Clean dataset is :")
+    print(Border)
+
+    print(df.head())
+
+    #---------------------------------------------------
+    # Step 3 - checking missing values
+    #---------------------------------------------------
+    print(Border)
+    print("Step 3 - checking missing values")
+    print(Border)
+
+    print("Missing values count :")
     print(df.isnull().sum())
 
-    df=df.mask(df==0).fillna(df.mean())
+    #---------------------------------------------------
+    # Step 4 - Display statistical summury
+    #---------------------------------------------------
+    print(Border)
+    print("Step 4 - Display statistical summury")
+    print(Border)
 
-    df.drop("Unnamed: 0", axis=1, inplace=True)
+    print(df.describe())
 
-    ###########################################################
-    # Step 3 - Training Data
-    ###########################################################
+    #---------------------------------------------------
+    # Step 5 - Encoding of featured and labels
+    #---------------------------------------------------
+    print(Border)
+    print("Step 5 - Encoding of featured and labels")
+    print(Border)
 
-    X = df[['TV', 'radio', 'newspaper']]
-    Y = df[['sales']]
+    Features = OrdinalEncoder()
+    df[['Whether', 'Temperature']] = Features.fit_transform(df[['Whether', 'Temperature']])
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.5, random_state=42)
+    Labels = LabelEncoder()
+    df['Play'] = Labels.fit_transform(df['Play'])
 
-    model = LinearRegression()
+    print("Few records after encoding :")
+    print(df.head())
+
+    #---------------------------------------------------
+    # Step 6 - split the dataset into independent and dependent variables
+    #---------------------------------------------------
+    print(Border)
+    print("Step 6 - split the dataset into independent and dependent variables")
+    print(Border)
+
+    X = df[['Whether', 'Temperature']]
+    Y = df['Play']
+
+    print("Shape of the Independent variables :", X.shape)
+    print("Shape of dependent variables :", Y.shape)
+
+    #---------------------------------------------------
+    # Step 7 - SPlit the data into training and testing
+    #---------------------------------------------------
+    print(Border)
+    print("Step 7 - SPlit the data into training and testing")
+    print(Border)
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+
+    print("X_train shape :", X_train.shape)
+    print("X_test shape :", X_test.shape)
+    print("Y_train shape :", Y_train.shape)
+    print("Y_test shape :", Y_test.shape)
+
+    #---------------------------------------------------
+    # Step 8 - Create and train the model
+    #---------------------------------------------------
+    print(Border)
+    print("Step 8 - Create and train the model")
+    print(Border)
+
+    model = KNeighborsClassifier(n_neighbors=3)
 
     model.fit(X_train, Y_train)
 
-     ###########################################################
-    # Step 3 - Testing Data
-    ###########################################################
+    #-----------------------------------------------------------------
+    # Step 9 - Test the model
+    #-----------------------------------------------------------------
+    print(Border)
+    print("Step 9 - Test the model")
+    print(Border)
 
     Y_pred = model.predict(X_test)
 
+    #-----------------------------------------------------------------
+    # Step 10 - Compare the actual and predicted values
+    #-----------------------------------------------------------------
     print(Border)
-    print("Predicted values of sales :")
-    print(Y_pred)
+    print("Step 10 - Comapre actual and predicted values")
     print(Border)
-    print("Actual values of sales :")
-    print(Y_test)
 
+    Result = pd.DataFrame({'Actual sale' : Y_test.values,
+                           'Predicted sale' : Y_pred
+                        })
+    
+    print(Result.head())
+
+    #-----------------------------------------------------------------
+    # Step 11 - Evaluate the model
+    #-----------------------------------------------------------------
+    print(Border)
+    print("Step 11 - Evaluate the model")
+    print(Border)
+
+    Accuracy = CheckAccuracy(Y_test, Y_pred)
+
+    print("Accuracy of the model for n = 3 is :")
+    print("Accuracy of the model :", Accuracy*100)
+
+    #-----------------------------------------------------------------
+    # Step 12 - Evaluation of the model for k = 5
+    #-----------------------------------------------------------------
+    print(Border)
+    print("Step 12 - Evaluation of the model for k = 5")
+    print(Border)
+
+    print("Accuracy of model for n = 5 is :")
+
+    model = KNeighborsClassifier(n_neighbors=5)
+
+    model.fit(X_train, Y_train)
+
+    Y_pred = model.predict(X_test)
+
+    Accuracy = CheckAccuracy(Y_test, Y_pred)
+
+    print("Accuracy of the model :", Accuracy*100)
+
+    print(Border)
+
+def main():
+    PlayPredictor("PlayPredictor.csv")
 
 if __name__ == "__main__":
     main()
