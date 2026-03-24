@@ -94,6 +94,7 @@ def main():
     acc3 = accuracy_score(Y_test, Y_pred3)
     print(acc3)
 
+    print(Border)
     cm1 = confusion_matrix(Y_test, Y_pred1)
     print(cm1)
     cm2 = confusion_matrix(Y_test, Y_pred2)
@@ -101,8 +102,18 @@ def main():
     cm3 = confusion_matrix(Y_test, Y_pred3)
     print(cm3)
 
-    
-   
+    print(Border)
+    cr1 = classification_report(Y_test, Y_pred1)
+    print(cr1)
+    cr2 = classification_report(Y_test, Y_pred2)
+    print(cr2)
+    cr3 = classification_report(Y_test, Y_pred3)
+    print(cr3)
+
+    print(Border)
+    print(Y_pred1)
+    print(Y_pred2)
+    print(Y_pred3)
 
 
 if __name__ == "__main__":
