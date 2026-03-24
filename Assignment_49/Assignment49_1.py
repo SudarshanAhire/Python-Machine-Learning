@@ -34,18 +34,19 @@ def main():
     plt.show()
 
     print("Plotting with histogram :")
-    # plt.figure(figsize=(8, 5))
-    # plt.hist(df['Outcome'])
-    # plt.xlabel("Outcome 0 and 1")
-    # plt.ylabel("No of records")
-    # plt.title("Histogram")
-    # plt.grid(True)
-    # plt.show()
+    plt.figure(figsize=(8, 5))
+    plt.hist(df['Outcome'], bins=10, color='skyblue', edgecolor='black')
+    plt.show()
 
     print("Plotting with boxplot :")
     plt.figure(figsize=(8, 5))
     sns.boxplot(data=df)
-    plt.title("Boxplot")
+    plt.title("Boxplot - detection of outliers")
+    plt.show()
+
+    print("Plotting with pairplot :")
+    plt.figure(figsize=(8, 5))
+    sns.pairplot(df, hue='Outcome')
     plt.show()
 
 
