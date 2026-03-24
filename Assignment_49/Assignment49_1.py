@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
+from sklearn.preprocessing import StandardScaler
+
 def main():
     
     #-----------------------------------------------------
@@ -55,6 +57,12 @@ def main():
 
     print("Missing values in Glucose :", df["Glucose"].isnull().sum())
     print("Missing values in bloodpressure :", df["BloodPressure"].isnull().sum())
+
+    X = df.drop('Outcome', axis=1)
+    Y = df['Outcome']
+
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
 
 
 
