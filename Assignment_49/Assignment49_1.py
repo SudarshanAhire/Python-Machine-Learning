@@ -75,10 +75,34 @@ def main():
 
     model_1 = DecisionTreeClassifier(criterion='gini', random_state=42, max_depth=5)
 
-    model_2 = KNeighborsClassifier(n_neighbors=5, )
+    model_2 = KNeighborsClassifier(n_neighbors=3)
 
     model_3 = LogisticRegression()
 
+    model_1.fit(X_train, Y_train)
+    model_2.fit(X_train, Y_train)
+    model_3.fit(X_train, Y_train)
+
+    Y_pred1 = model_1.predict(X_test)
+    Y_pred2 = model_2.predict(X_test)
+    Y_pred3 = model_3.predict(X_test)
+
+    acc1 = accuracy_score(Y_test, Y_pred1)
+    print(acc1)
+    acc2 = accuracy_score(Y_test, Y_pred2)
+    print(acc2)
+    acc3 = accuracy_score(Y_test, Y_pred3)
+    print(acc3)
+
+    cm1 = confusion_matrix(Y_test, Y_pred1)
+    print(cm1)
+    cm2 = confusion_matrix(Y_test, Y_pred2)
+    print(cm2)
+    cm3 = confusion_matrix(Y_test, Y_pred3)
+    print(cm3)
+
+    
+   
 
 
 if __name__ == "__main__":
