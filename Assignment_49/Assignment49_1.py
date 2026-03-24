@@ -29,25 +29,34 @@ def main():
     print(df.describe())
     print(Border)
 
-    print("Plotting of the target variable :")
-    sns.countplot(x='Outcome', data=df)
-    plt.show()
+    # print("Plotting of the target variable :")
+    # sns.countplot(x='Outcome', data=df)
+    # plt.show()
 
-    print("Plotting with histogram :")
-    plt.figure(figsize=(8, 5))
-    plt.hist(df['Outcome'], bins=10, color='skyblue', edgecolor='black')
-    plt.show()
+    # print("Plotting with histogram :")
+    # plt.figure(figsize=(8, 5))
+    # plt.hist(df['Outcome'], bins=10, color='skyblue', edgecolor='black')
+    # plt.show()
 
-    print("Plotting with boxplot :")
-    plt.figure(figsize=(8, 5))
-    sns.boxplot(data=df)
-    plt.title("Boxplot - detection of outliers")
-    plt.show()
+    # print("Plotting with boxplot :")
+    # plt.figure(figsize=(8, 5))
+    # sns.boxplot(data=df)
+    # plt.title("Boxplot - detection of outliers")
+    # plt.show()
 
-    print("Plotting with pairplot :")
-    plt.figure(figsize=(8, 5))
-    sns.pairplot(df, hue='Outcome')
-    plt.show()
+    # print("Plotting with pairplot :")
+    # plt.figure(figsize=(8, 5))
+    # sns.pairplot(df, hue='Outcome')
+    # plt.show()
+
+    #-----------------------------------------------------
+    # Step 2 - Data Preprocessing
+    #-----------------------------------------------------
+
+    print("Missing values in Glucose :", df["Glucose"].isnull().sum())
+    print("Missing values in bloodpressure :", df["BloodPressure"].isnull().sum())
+
+
 
 
 if __name__ == "__main__":
