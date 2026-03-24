@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
@@ -20,9 +21,29 @@ def main():
     print(df.head())
     print(Border)
 
-    print("Missing values of clumns and column information :")
+    print("Column info and missing values :")
     print(df.isnull().sum())
     print(Border)
+
+    print("Statistical inforamtion of dataset :")
+    print(df.describe())
+    print(Border)
+
+    print("Plotting of the target variable :")
+    print("Plotting with histogram :")
+    # plt.figure(figsize=(8, 5))
+    # plt.hist(df['Outcome'])
+    # plt.xlabel("Outcome 0 and 1")
+    # plt.ylabel("No of records")
+    # plt.title("Histogram")
+    # plt.grid(True)
+    # plt.show()
+
+    print("Plotting with boxplot :")
+    plt.figure(figsize=(8, 5))
+    sns.boxplot(df['Outcome'], x = 0, y = 1)
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
