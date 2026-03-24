@@ -5,6 +5,8 @@ import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 from sklearn.preprocessing import StandardScaler
@@ -64,6 +66,18 @@ def main():
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
+
+    #-----------------------------------------------------
+    # Step 3 - Mdodel Building
+    #-----------------------------------------------------
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
+
+    model_1 = DecisionTreeClassifier(criterion='gini', random_state=42, max_depth=5)
+
+    model_2 = KNeighborsClassifier(n_neighbors=5, )
+
+    model_3 = LogisticRegression()
 
 
 
