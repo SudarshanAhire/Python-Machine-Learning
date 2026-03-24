@@ -30,6 +30,9 @@ def main():
     print(Border)
 
     print("Plotting of the target variable :")
+    sns.countplot(x='Outcome', data=df)
+    plt.show()
+
     print("Plotting with histogram :")
     # plt.figure(figsize=(8, 5))
     # plt.hist(df['Outcome'])
@@ -41,7 +44,8 @@ def main():
 
     print("Plotting with boxplot :")
     plt.figure(figsize=(8, 5))
-    sns.boxplot(df['Outcome'], x = 0, y = 1)
+    sns.boxplot(data=df)
+    plt.title("Boxplot")
     plt.show()
 
 
