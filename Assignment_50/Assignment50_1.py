@@ -1,16 +1,133 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 def main():
-    data = pd.read_csv("bank-full.csv", sep=";")
-    data.to_csv("converted.csv", index=False)
 
-    df = pd.read_csv("converted.csv")
+    #------------------------------------------------------------
+    # Step 1 - Load the dataset
+    #------------------------------------------------------------
 
-    print(df.head())
-    print(df.shape)
+    df = pd.read_csv("bank-full.csv", sep=";")
 
-    print("MIssing values count :", df.isnull().sum())
+    #------------------------------------------------------------
+    # Step 2 - Analysis of the dataset
+    #------------------------------------------------------------
+
+    print("Shape of dataset :", df.shape)
+    print("First few records of dataset :", df.head())
+    print("Columns in dataset :", list(df.columns))
+
+    print("Statistical information of dataset :")
+    print(df.describe())
+
+    print("Missing values of dataset :")
+    print(df.isnull().sum())
+
+
+    #------------------------------------------------------------
+    # Step 3 - Visualization of dataset
+    #------------------------------------------------------------
+
+
+
+    #------------------------------------------------------------
+    # Step 4 - preprocessing and feature encoding
+    #------------------------------------------------------------
+
+    print("Data before preprocessing :")
+
+    if 'job' in df.columns:
+        print("Job column before preprocessing :")
+        print(df['job'].head(10))
+
+        df['job'] = df['job'].astype('category').cat.codes
+
+        print("job column after encoding :")
+        print(df['job'].head(10))
+
+    if 'marital' in df.columns:
+        print("marital column before preprocessing :")
+        print(df['marital'].head(10))
+
+        df['marital'] = df['marital'].astype('category').cat.codes
+
+        print("marital column after encoding :")
+        print(df['marital'].head(10))
+
+
+    if 'education' in df.columns:
+        print("education column before preprocessing :")
+        print(df['education'].head(10))
+
+        df['education'] = df['education'].astype('category').cat.codes
+        print("education column after encoding :")
+        print(df['education'].head(10))
+
+    if 'default' in df.columns:
+        print("default column before preprocessing :")
+        print(df['default'].head(10))
+
+        df['default'] = df['default'].astype('category').cat.codes
+        print("default column after encoding :")
+        print(df['default'].head(10))
+
+    if 'housing' in df.columns:
+        print("housing column before preprocessing :")
+        print(df['housing'].head(10))
+
+        df['housing'] = df['housing'].astype('category').cat.codes
+        print("housing column after encoding :")
+        print(df['housing'].head(10))
+
+    if 'loan' in df.columns:
+        print("loan column before preprocessing :")
+        print(df['loan'].head(10))
+
+        df['loan'] = df['loan'].astype('category').cat.codes
+        print("loan column after encoding :")
+        print(df['loan'].head(10))
+
+    if 'contact' in df.columns:
+        print("contact column before preprocessing :")
+        print(df['contact'].head(10))
+
+        df['contact'] = df['contact'].astype('category').cat.codes
+        print("contact column after encoding :")
+        print(df['contact'].head(10))
+
+    if 'month' in df.columns:
+        print("month column before preprocessing :")
+        print(df['month'].head(10))
+
+        df['month'] = df['month'].astype('category').cat.codes
+        print("month column after encoding :")
+        print(df['month'].head(10))
+
+    if 'poutcome' in df.columns:
+        print("poutcome column before preprocessing :")
+        print(df['poutcome'].head(10))
+
+        df['poutcome'] = df['poutcome'].astype('category').cat.codes
+        print("poutcome column after encoding :")
+        print(df['poutcome'].head(10))
+
+    if 'y' in df.columns:
+        print("y column before preprocessing :")
+        print(df['y'].head(10))
+
+        df['y'] = df['y'].astype('category').cat.codes
+        print("y column after encoding :")
+        print(df['y'].head(10))
+
+    print("Data after preprocessing :")
+    print(df.head(10))
+
+
+    #------------------------------------------------------------
+    # Step 5 - Split the dataset into features and target variable
+    #------------------------------------------------------------
+        
     
 
 if __name__ == "__main__":
