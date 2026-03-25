@@ -220,10 +220,22 @@ def main():
     # Step 9 - Plotting confusion matrix and ROC curve
     #------------------------------------------------------------
 
+    print("Displaying confusion matrix of KNN :")
     disp = ConfusionMatrixDisplay(confusion_matrix=knn_cm, display_labels=model_knn.classes_)
     disp.plot()
     plt.show()
+
+    print("Displaying confusion matrix of Logistic Regression :")
+    disp = ConfusionMatrixDisplay(confusion_matrix=lr_cm, display_labels=model_lr.classes_)
+    disp.plot()
+    plt.show()
+
+    print("Displaying confusion matrix of Random Forest :")
+    disp = ConfusionMatrixDisplay(confusion_matrix=rf_cm, display_labels=model_rf.classes_)
+    disp.plot()
+    plt.show()
     
+    print()
 
 if __name__ == "__main__":
     main() 
