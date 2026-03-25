@@ -7,7 +7,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score
+from sklearn.metrics import (
+    accuracy_score, 
+    confusion_matrix, 
+    classification_report, 
+    roc_auc_score, 
+    RocCurveDisplay, 
+    ConfusionMatrixDisplay
+)
 
 def main():
 
@@ -203,8 +210,19 @@ def main():
     print("Classification report of Random Forest :")
     rf_cr = classification_report(Y_pred_rf, Y_test)
     print(rf_cr)
+
+
+    print("ROC_AUC Score of KNN :", roc_auc_score(Y_pred_knn, Y_test))
+    print("ROC_AUC Score of Logistic Regression :", roc_auc_score(Y_pred_lr, Y_test))
+    print("ROC_AUC Score of Random Forest :", roc_auc_score(Y_pred_rf, Y_test))
     
-    
+    #------------------------------------------------------------
+    # Step 9 - Plotting confusion matrix and ROC curve
+    #------------------------------------------------------------
+
+    disp = ConfusionMatrixDisplay(confusion_matrix=knn_cm, display_labels=model_knn.classes_)
+    disp.plot()
+    plt.show()
     
 
 if __name__ == "__main__":
