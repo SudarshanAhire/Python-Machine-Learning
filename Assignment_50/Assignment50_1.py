@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score
 
 def main():
 
@@ -155,16 +155,34 @@ def main():
     # Step 7 - Training classification models
     #------------------------------------------------------------
 
-    model = KNeighborsClassifier(n_neighbors=5)
+    model_knn = KNeighborsClassifier(n_neighbors=5)  
+    model_lr = LogisticRegression(max_iter=1000) 
+    model_rf = RandomForestClassifier() 
 
-    model.fit(X_train, Y_train)
+    model_knn.fit(X_train, Y_train)
+    model_lr.fit(X_train, Y_train)
+    model_rf.fit(X_train, Y_train)
 
-    Y_pred = model.predict(X_test)
+    Y_pred_knn = model_knn.predict(X_test)
+    Y_pred_lr = model_lr.predict(X_test)
+    Y_pred_rf = model_rf.predict(X_test)
 
-    acc = accuracy_score(Y_test, Y_pred)
+    #------------------------------------------------------------
+    # Step 8 - Evaluation of the model
+    #------------------------------------------------------------
 
-    print("Accuracy :", acc)
+    knn_acc = accuracy_score(Y_test, Y_pred_knn)
+    lr_acc = accuracy_score(Y_test, Y_pred_lr)
+    rf_acc = accuracy_score(Y_test, Y_pred_rf)
+
+    print("Accuracy of using KNN :", knn_acc)
+    print("Accuracy of using Logistic Regression :", lr_acc)
+    print("Accuracy of using Random forest :", rf_acc)
+
+
+
+    
     
 
 if __name__ == "__main__":
-    main()
+    main() 
