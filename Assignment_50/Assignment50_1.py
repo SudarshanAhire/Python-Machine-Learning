@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from sklearn.preprocessing import StandardScaler
+
 def main():
 
     #------------------------------------------------------------
@@ -127,6 +129,11 @@ def main():
     #------------------------------------------------------------
     # Step 5 - Split the dataset into features and target variable
     #------------------------------------------------------------
+
+    X = df.drop('y', axis=1)
+    Y = df['y']
+
+    scaler = StanderdScaler()
         
     
 
