@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 def main():
 
@@ -133,8 +134,20 @@ def main():
     X = df.drop('y', axis=1)
     Y = df['y']
 
-    scaler = StanderdScaler()
-        
+    scaler = StandardScaler()
+
+    X_scaled = scaler.fit_transform(X)
+
+    print("Data after standerd Scalling :")
+    print(X_scaled[:10])
+
+    #------------------------------------------------------------
+    # Step 6 - splitting the dataset for train test split
+    #------------------------------------------------------------
+
+    X_train, X_test, Y_train, Y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
+    
+            
     
 
 if __name__ == "__main__":
