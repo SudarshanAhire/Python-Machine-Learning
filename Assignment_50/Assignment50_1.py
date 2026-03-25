@@ -180,7 +180,30 @@ def main():
     print("Accuracy of using Random forest :", rf_acc)
 
 
+    print("Confusion Matrix of KNN :")
+    knn_cm = confusion_matrix(Y_pred_knn, Y_test)
+    print(knn_cm)
 
+    print("Confusion Matrix of Logistic Regression :")
+    lr_cm = confusion_matrix(Y_pred_lr, Y_test)
+    print(knn_cm)
+
+    print("Confusion Matrix of Random forest :")
+    rf_cm = confusion_matrix(Y_pred_rf, Y_test)
+    print(rf_cm)
+
+    print("Classification report of knn :")
+    knn_cr = classification_report(Y_pred_knn, Y_test)
+    print(knn_cr)
+
+    print("Classification report of Logistic Regression :")
+    lr_cr = classification_report(Y_pred_lr, Y_test)
+    print(lr_cr)
+    
+    print("Classification report of Random Forest :")
+    rf_cr = classification_report(Y_pred_rf, Y_test)
+    print(rf_cr)
+    
     
     
 
