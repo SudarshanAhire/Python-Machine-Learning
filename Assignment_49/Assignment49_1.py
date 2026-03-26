@@ -33,25 +33,25 @@ def main():
     print(df.describe())
     print(Border)
 
-    # print("Plotting of the target variable :")
-    # sns.countplot(x='Outcome', data=df)
-    # plt.show()
+    print("Distribution of the target variable :")
+    sns.countplot(x='Outcome', data=df)
+    plt.show()
 
-    # print("Plotting with histogram :")
-    # plt.figure(figsize=(8, 5))
-    # plt.hist(df['Outcome'], bins=10, color='skyblue', edgecolor='black')
-    # plt.show()
+    print("Histogram of the target variable :")
+    plt.figure(figsize=(8, 5))
+    plt.hist(df['Outcome'], bins=10, color='skyblue', edgecolor='black')
+    plt.show()
 
-    # print("Plotting with boxplot :")
-    # plt.figure(figsize=(8, 5))
-    # sns.boxplot(data=df)
-    # plt.title("Boxplot - detection of outliers")
-    # plt.show()
+    print("Outliers Visualization in the dataset :")
+    plt.figure(figsize=(8, 5))
+    sns.boxplot(data=df)
+    plt.title("Boxplot - detection of outliers")
+    plt.show()
 
-    # print("Plotting with pairplot :")
-    # plt.figure(figsize=(8, 5))
-    # sns.pairplot(df, hue='Outcome')
-    # plt.show()
+    print("Pairplot of the dataset :")
+    plt.figure(figsize=(8, 5))
+    sns.pairplot(df, hue='Outcome')
+    plt.show()
 
     #-----------------------------------------------------
     # Step 2 - Data Preprocessing
