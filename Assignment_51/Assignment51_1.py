@@ -40,7 +40,16 @@ def main():
     # Step 2 - Analysis and Preprocessing Of Dataset
     #------------------------------------------------------
 
-    
+    print("Shape of the dataset :", df.shape)
+    print("Columns in the dataset :", list(df.columns))
+
+    print("Missing values count in the dataset :")
+    print(df.isnull().sum())
+
+    print("Statistical information of dataset :" )
+    print(df.describe())
+
+
 
 
 if __name__ == "__main__":
