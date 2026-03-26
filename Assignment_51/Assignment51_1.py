@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def main():
     #------------------------------------------------------
@@ -46,9 +47,19 @@ def main():
     print("Missing values count in the dataset :")
     print(df.isnull().sum())
 
-     #------------------------------------------------------
+    #------------------------------------------------------
     # Step 3 - Feature Extraction 
     #------------------------------------------------------
+
+    X = df[['title', 'text']]
+    Y = df['label']
+
+    vectorizer = TfidfVectorizer()
+
+    X = vectorizer.fit_transform(X)
+
+
+
 
 
 
