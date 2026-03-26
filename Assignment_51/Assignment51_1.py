@@ -7,6 +7,10 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 def main():
+    #------------------------------------------------------
+    # Step 1 - Load Dataset and Preprocessing
+    #------------------------------------------------------
+    
     true_data = pd.read_csv("True.csv")
 
     fake_data = pd.read_csv("Fake.csv")
@@ -15,8 +19,6 @@ def main():
 
     fake_data['label'] = 0
 
-    print(true_data.head(10))
-    print(fake_data.head(10))
 
 if __name__ == "__main__":
     main()
