@@ -46,6 +46,10 @@ def main():
     print("Missing values count in the dataset :")
     print(df.isnull().sum())
 
+     #------------------------------------------------------
+    # Step 3 - Feature Extraction 
+    #------------------------------------------------------
+
 
 
 
