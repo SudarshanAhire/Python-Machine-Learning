@@ -120,9 +120,23 @@ def main():
     print("Classification Report - Logistic Regression:")
     print(cr3)
 
-    print("Visualization of cinfusion matrix for Decision Tree Classifier :")
+    print("Visualization of confusion matrix for Decision Tree Classifier :")
     plt.figure(figsize=(8, 5))
-    conf = plot(confusion_matrix=cm1, )
+    sns.heatmap(cm1, annot=True, fmt='d', cmap='Blues')
+    plt.title("Confusion Matrix - Decision Tree")
+    plt.show()
+
+    print("Visualization of confusion matrix for K-Neighbour Classifier :")
+    plt.figure(figsize=(8, 5))
+    sns.heatmap(cm2, annot=True, fmt='d', cmap='Blues')
+    plt.title("Confusion Matrix - K-Neighbour Classifier")
+    plt.show()
+
+    print("Visualization of confusion matrix for Logistic Regression :")
+    plt.figure(figsize=(8, 5))
+    sns.heatmap(cm3, annot=True, fmt='d', cmap='Blues')
+    plt.title("Confusion Matrix - Logistic Regression")
+    plt.show()
 
     # print(Border)
     # print(Y_pred1)
