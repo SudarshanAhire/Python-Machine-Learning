@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import VotingClassifier
 
 def main():
     #------------------------------------------------------
@@ -71,12 +71,12 @@ def main():
     lr_model.fit(X_train, Y_train)
     dt_model.fit(X_train, Y_train)
 
-    hard_model = BaggingClassifier(
+    hard_model = VotingClassifier(
         estimator = [
         ('lr', lr_model),
         ('dt', dt_model)
     ],
-    voting = 'hard'
+    voting='hard'
     )
 
     hard_model.fit(X_train, Y_train)
