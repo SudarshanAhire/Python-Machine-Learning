@@ -144,10 +144,29 @@ def main():
     # Step 5 - Final Output
     #-----------------------------------------------------
 
-    # print(Border)
-    # print(Y_pred1)
-    # print(Y_pred2)
-    # print(Y_pred3)
+
+    print("Actual values of target variable :")
+    print(Y_test)
+
+    print("Prediction of the target variable for Decision Tree Classifier :")
+    print(Y_pred1)
+    print("Prediction of the target variable for K-Nearest Neighbors Classifier :")
+    print(Y_pred2)
+    print("Prediction of the target variable for Logistic Regression Classifier :")
+    print(Y_pred3)
+        
+
+    Prediction = pd.DataFrame()
+
+    Prediction[["Y_pred1", "Y_pred2", "Y_pred3"]] = pd.DataFrame({
+        "Y_pred1": Y_pred1,
+        "Y_pred2": Y_pred2,
+        "Y_pred3": Y_pred3
+    })
+
+    Prediction["Actual"] = Y_test
+
+    Prediction.to_csv("Prediction.csv", index=False)
 
 
 if __name__ == "__main__":
