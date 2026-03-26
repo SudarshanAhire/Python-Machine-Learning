@@ -72,7 +72,7 @@ def main():
     dt_model.fit(X_train, Y_train)
 
     hard_model = VotingClassifier(
-        estimator = [
+        estimators = [
         ('lr', lr_model),
         ('dt', dt_model)
     ],
