@@ -66,6 +66,8 @@ def main():
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
+    print("Dataset after scaling :")
+    print(X_scaled[:10])
 
     #-----------------------------------------------------
     # Step 3 - Mdodel Building
@@ -137,6 +139,10 @@ def main():
     sns.heatmap(cm3, annot=True, fmt='d', cmap='Blues')
     plt.title("Confusion Matrix - Logistic Regression")
     plt.show()
+
+    #-----------------------------------------------------
+    # Step 5 - Final Output
+    #-----------------------------------------------------
 
     # print(Border)
     # print(Y_pred1)
