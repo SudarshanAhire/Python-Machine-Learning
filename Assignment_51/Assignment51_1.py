@@ -46,9 +46,6 @@ def main():
     print("Missing values count in the dataset :")
     print(df.isnull().sum())
 
-    print("Statistical information of dataset :" )
-    print(df.describe())
-
 
 
 
