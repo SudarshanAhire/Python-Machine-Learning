@@ -87,33 +87,47 @@ def main():
     Y_pred2 = model_2.predict(X_test)
     Y_pred3 = model_3.predict(X_test)
 
+    #-----------------------------------------------------
+    # Step 4 - Model Evaluation
+    #-----------------------------------------------------
+
     acc1 = accuracy_score(Y_test, Y_pred1)
-    print(acc1)
+    print("Accuracy of Decision Tree Classifier :", acc1)
     acc2 = accuracy_score(Y_test, Y_pred2)
-    print(acc2)
+    print("Accuracy of K-Nearest Neighbors Classifier :", acc2)
     acc3 = accuracy_score(Y_test, Y_pred3)
-    print(acc3)
+    print("Accuracy of Logistic Regression Classifier :", acc3)
 
     print(Border)
     cm1 = confusion_matrix(Y_test, Y_pred1)
+    print("Confusion Matrix - Decision Tree:")
     print(cm1)
     cm2 = confusion_matrix(Y_test, Y_pred2)
+    print("Confusion Matrix - K-Nearest Neighbors:")
     print(cm2)
     cm3 = confusion_matrix(Y_test, Y_pred3)
+    print("Confusion Matrix - Logistic Regression:")
     print(cm3)
 
     print(Border)
     cr1 = classification_report(Y_test, Y_pred1)
+    print("Classification Report - Decision Tree:")
     print(cr1)
     cr2 = classification_report(Y_test, Y_pred2)
+    print("Classification Report - K-Nearest Neighbors:")
     print(cr2)
     cr3 = classification_report(Y_test, Y_pred3)
+    print("Classification Report - Logistic Regression:")
     print(cr3)
 
-    print(Border)
-    print(Y_pred1)
-    print(Y_pred2)
-    print(Y_pred3)
+    print("Visualization of cinfusion matrix for Decision Tree Classifier :")
+    plt.figure(figsize=(8, 5))
+    conf = plot(confusion_matrix=cm1, )
+
+    # print(Border)
+    # print(Y_pred1)
+    # print(Y_pred2)
+    # print(Y_pred3)
 
 
 if __name__ == "__main__":
