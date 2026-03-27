@@ -81,11 +81,39 @@ def main():
 
     hard_model.fit(X_train, Y_train)
 
-    Y_pred = hard_model.predict(X_test)
+    Y_pred_hard = hard_model.predict(X_test)
 
-    acc = accuracy_score(Y_test, Y_pred)
 
-    print(acc)
+    soft_model = VotingClassifier(
+        estimators=[
+            ('lr', lr_model),
+            ('dt', dt_model)
+        ],
+        voting='soft'
+    )
+
+    soft_model.fit(X_train, Y_train)
+
+    Y_pred_soft = soft_model.predict(X_test)
+
+    #------------------------------------------------------
+    # Step 5 - Evaluation of models
+    #------------------------------------------------------
+
+    acc_hard = accuracy_score(Y_test, Y_pred_hard)
+
+    acc_soft = accuracy_score(Y_test, Y_pred_soft)
+
+    print("Accuracy of the hard model :", acc_hard)
+    print("Accuracy of the soft model :", acc_soft)
+
+    cm_hard = confusion_matrix(Y_test, Y_pred_hard)
+    print("Confusion matrix of hard model :")
+    print(cm_hard)
+
+    cm_soft = confusion_matrix(Y_test, Y_pred_soft) 
+    print("Confusion matrix of soft model :")
+    print(cm_soft)
 
 
 if __name__ == "__main__":
