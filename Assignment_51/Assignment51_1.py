@@ -115,6 +115,8 @@ def main():
     print("Confusion matrix of soft model :")
     print(cm_soft)
 
+    print(f"Accuracy of hard voting model : {acc_hard:.4f} vs soft voting model : {acc_soft:.4f}")
+
 
 if __name__ == "__main__":
     main()
