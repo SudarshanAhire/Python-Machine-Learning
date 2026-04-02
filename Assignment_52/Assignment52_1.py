@@ -62,24 +62,11 @@ def main():
 
     print("Dataset with clusters")
     print(df.head(30))
-    
-    #--------------------------------------------------------
-    # Train the model 
-    #--------------------------------------------------------
 
-    model = KMeans(n_clusters=3, random_state=42, n_init=10)
-    clusters = model.fit_predict(X_scaled)
-
-    df['cluster'] = clusters 
-    print(df.head())    
-
-    labels = model.labels_
-    print("Cluster labels : ", labels)
-
-    centriods = model.cluster_centers_
-    print("Centriods : ", centriods)
-
-
+    print(df[['G1', 'G2', 'G3', 'studytime', 'absences', 'failures', 'clusters']])
+   
     
 if __name__ == "__main__":
     main()
+
+
