@@ -39,9 +39,15 @@ def main():
     print("Statistical information of the dataset :")
     print(X.describe())
 
+    #------------------------------------------
+    # Step 3 - Scaled the data
+    #------------------------------------------
+    print("Step 3 - Scaled the data")
+
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
+    print("Data after scalling :")
     print(X_scaled[:5])
 
     WCSS = []
