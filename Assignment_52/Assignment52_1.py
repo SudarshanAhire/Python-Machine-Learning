@@ -24,10 +24,19 @@ def main():
     print("Missing values of dataset :")
     print(df.isnull().sum())
 
-    X = df[['G1', 'G2', "G3",'studytime', 'absences', 'failures']]
+    #----------------------------------------------------------
+    # Step 2 - Select the features (independent variables)
+    #----------------------------------------------------------
 
+    print("Step 2 - Select features")
+
+    X = df[['G1', 'G2', "G3",'studytime', 'absences', 'failures']]
     print(X.head())
 
+    print("Shape of the features :")
+    print(X.shape)
+
+    print("Statistical information of the dataset :")
     print(X.describe())
 
     scaler = StandardScaler()
