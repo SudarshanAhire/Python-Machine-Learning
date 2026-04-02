@@ -12,11 +12,16 @@ def main():
     # Step 1 - Load the dataset
     #----------------------------------------------------------
 
+    print("Step 1 - Load the dataset")
     df = pd.read_csv("student-mat.csv", sep=";")
 
+    print("First few records of dataset :")
     print(df.head())
 
+    print("Shape of the dataset :")
     print(df.shape)
+
+    print("Missing values of dataset :")
     print(df.isnull().sum())
 
     X = df[['G1', 'G2', "G3",'studytime', 'absences', 'failures']]
@@ -28,22 +33,37 @@ def main():
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    # plt.boxplot(X)
-    # plt.show()
+    print(X_scaled[:5])
+
+    WCSS = []
+
+    for i in range(1, 11):
+        model = KMeans(n_clusters=i, random_state=42, n_init=10)
+        model.fit(X_scaled)
+        WCSS.append(model.inertia_)
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(range(1, 11), WCSS, marker='o')
+    plt.grid(True)
+    plt.show()
     
-    model = KMeans(n_clusters=3, random_state=42)
+    #--------------------------------------------------------
+    # Train the model 
+    #--------------------------------------------------------
 
-    model.fit(X)
+    model = KMeans(n_clusters=3, random_state=42, n_init=10)
+    clusters = model.fit_predict(X_scaled)
 
-    # cluster = model.fit_predict(X_scaled)
+    df['cluster'] = clusters 
+    print(df.head())    
 
-    # df['Cluster'] = cluster
+    labels = model.labels_
+    print("Cluster labels : ", labels)
 
-    Y_pred = model.predict([[5, 6, 6, 2, 6, 0]])
-
-    # print(df.head())
-    print(Y_pred)
+    centriods = model.cluster_centers_
+    print("Centriods : ", centriods)
 
 
+    
 if __name__ == "__main__":
     main()
