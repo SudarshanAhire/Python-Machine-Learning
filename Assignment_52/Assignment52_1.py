@@ -50,17 +50,18 @@ def main():
     print("Data after scalling :")
     print(X_scaled[:5])
 
-    WCSS = []
+   #------------------------------------------
+    # Step 4 - train the model
+    #------------------------------------------
+    print("Step 4 - Train the model")
 
-    for i in range(1, 11):
-        model = KMeans(n_clusters=i, random_state=42, n_init=10)
-        model.fit(X_scaled)
-        WCSS.append(model.inertia_)
+    model = KMeans(n_clusters=3, random_state=42, n_init=10)
+    clusters = model.fit_predict(X_scaled)
 
-    plt.figure(figsize=(8, 5))
-    plt.plot(range(1, 11), WCSS, marker='o')
-    plt.grid(True)
-    plt.show()
+    df["clusters"] = clusters
+
+    print("Dataset with clusters")
+    print(df.head(30))
     
     #--------------------------------------------------------
     # Train the model 
