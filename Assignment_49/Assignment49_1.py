@@ -52,12 +52,6 @@ def main():
     plt.show()
     print(Border)
 
-    print("Pairplot of the dataset :")
-    plt.figure(figsize=(8, 5))
-    sns.pairplot(df, hue='Outcome')
-    plt.show()
-    print(Border)
-
     #-----------------------------------------------------
     # Step 2 - Data Preprocessing
     #-----------------------------------------------------
