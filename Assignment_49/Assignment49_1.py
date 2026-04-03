@@ -69,7 +69,11 @@ def main():
     print("Missing values in bloodpressure :", df["BloodPressure"].isnull().sum())
     print(Border)
 
-    X = df.drop('Outcome', axis=1)
+    plt.figure(figsize=(10,8))
+    sns.heatmap(df.corr(), annot=True)
+    plt.show()
+
+    X = df[['Glucose', 'Insulin', 'BMI', 'Age']]
     Y = df['Outcome']
 
     scaler = StandardScaler()
@@ -87,11 +91,11 @@ def main():
 
     X_train, X_test, Y_train, Y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=42)
 
-    model_1 = DecisionTreeClassifier(criterion='gini', random_state=42, max_depth=5)
+    model_1 = DecisionTreeClassifier(criterion='gini', random_state=42, max_depth=4)
 
-    model_2 = KNeighborsClassifier(n_neighbors=3)
+    model_2 = KNeighborsClassifier(n_neighbors=7)
 
-    model_3 = LogisticRegression()
+    model_3 = LogisticRegression(max_iter=200)
 
     model_1.fit(X_train, Y_train)
     model_2.fit(X_train, Y_train)
@@ -201,7 +205,7 @@ def main():
         "Y_pred3": Y_pred3
     })
 
-    Prediction["Actual"] = Y_test
+    Prediction["Actual"] = Y_test.reset_index(drop=True)
 
     Prediction.to_csv("Prediction.csv", index=False)
     print("Predictions.csv created succesully...")
