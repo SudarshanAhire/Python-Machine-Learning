@@ -90,20 +90,24 @@ def main():
         print("Job column before preprocessing :")
         print(df['job'].head(10))
 
-        df['job'] = df['job'].astype('category').cat.codes
+        df = pd.get_dummies(df, columns=['job'], drop_first=True)
 
-        print("job column after encoding :")
-        print(df['job'].head(10))
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'marital' in df.columns:
         print("marital column before preprocessing :")
         print(df['marital'].head(10))
 
-        df['marital'] = df['marital'].astype('category').cat.codes
+        df = pd.get_dummies(df, columns=['marital'], drop_first=True)
 
-        print("marital column after encoding :")
-        print(df['marital'].head(10))
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
 
@@ -111,63 +115,84 @@ def main():
         print("education column before preprocessing :")
         print(df['education'].head(10))
 
-        df['education'] = df['education'].astype('category').cat.codes
-        print("education column after encoding :")
-        print(df['education'].head(10))
+        df = pd.get_dummies(df, columns=['education'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'default' in df.columns:
         print("default column before preprocessing :")
         print(df['default'].head(10))
 
-        df['default'] = df['default'].astype('category').cat.codes
-        print("default column after encoding :")
-        print(df['default'].head(10))
+        df = pd.get_dummies(df, columns=['default'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'housing' in df.columns:
         print("housing column before preprocessing :")
         print(df['housing'].head(10))
 
-        df['housing'] = df['housing'].astype('category').cat.codes
-        print("housing column after encoding :")
-        print(df['housing'].head(10))
+        df = pd.get_dummies(df, columns=['housing'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'loan' in df.columns:
         print("loan column before preprocessing :")
         print(df['loan'].head(10))
 
-        df['loan'] = df['loan'].astype('category').cat.codes
-        print("loan column after encoding :")
-        print(df['loan'].head(10))
+        df = pd.get_dummies(df, columns=['loan'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'contact' in df.columns:
         print("contact column before preprocessing :")
         print(df['contact'].head(10))
 
-        df['contact'] = df['contact'].astype('category').cat.codes
-        print("contact column after encoding :")
-        print(df['contact'].head(10))
+        df = pd.get_dummies(df, columns=['contact'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'month' in df.columns:
         print("month column before preprocessing :")
         print(df['month'].head(10))
 
-        df['month'] = df['month'].astype('category').cat.codes
-        print("month column after encoding :")
-        print(df['month'].head(10))
+        df = pd.get_dummies(df, columns=['month'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'poutcome' in df.columns:
         print("poutcome column before preprocessing :")
         print(df['poutcome'].head(10))
 
-        df['poutcome'] = df['poutcome'].astype('category').cat.codes
-        print("poutcome column after encoding :")
-        print(df['poutcome'].head(10))
+        df = pd.get_dummies(df, columns=['poutcome'], drop_first=True)
+
+        for col in df.columns:
+            if df[col].dtype == bool:
+                df[col] = df[col].astype(int)
+
         print(Border)
 
     if 'y' in df.columns:
