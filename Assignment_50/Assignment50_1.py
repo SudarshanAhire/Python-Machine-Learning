@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -59,7 +60,22 @@ def main():
     print("Step 3 - Visualization of dataset ")
     print(Border)
 
+    sns.countplot(x='y', data=df)
+    plt.title("Target Variable Distribution")
+    plt.show()
 
+    plt.figure(figsize=(10,6))
+    sns.boxplot(data=df[['age','balance','duration']])
+    plt.title("Boxplot for Outliers")
+    plt.show()
+
+    sns.countplot(x='job', hue='y', data=df)
+    plt.xticks(rotation=45)
+    plt.title("Job vs Target")
+    plt.show()
+
+    sns.pairplot(df[['age','balance','duration','y']], hue='y')
+    plt.show()
 
     #------------------------------------------------------------
     # Step 4 - preprocessing and feature encoding
@@ -174,6 +190,11 @@ def main():
     print("Step 5 - Split the dataset into features and target variables")
     print(Border)
 
+    plt.figure(figsize=(12,8))
+    sns.heatmap(df.corr(), annot=False, cmap='coolwarm')
+    plt.title("Correlation Heatmap")
+    plt.show()
+
     X = df.drop('y', axis=1)
     Y = df['y']
 
@@ -228,39 +249,39 @@ def main():
 
 
     print("Confusion Matrix of KNN :")
-    knn_cm = confusion_matrix(Y_pred_knn, Y_test)
+    knn_cm = confusion_matrix(Y_test, Y_pred_knn)
     print(knn_cm)
     print(Border)
 
     print("Confusion Matrix of Logistic Regression :")
-    lr_cm = confusion_matrix(Y_pred_lr, Y_test)
+    lr_cm = confusion_matrix(Y_test, Y_pred_lr)
     print(knn_cm)
     print(Border)
 
     print("Confusion Matrix of Random forest :")
-    rf_cm = confusion_matrix(Y_pred_rf, Y_test)
+    rf_cm = confusion_matrix(Y_test, Y_pred_rf)
     print(rf_cm)
     print(Border)
 
     print("Classification report of knn :")
-    knn_cr = classification_report(Y_pred_knn, Y_test)
+    knn_cr = classification_report(Y_test, Y_pred_knn)
     print(knn_cr)
     print(Border)
 
     print("Classification report of Logistic Regression :")
-    lr_cr = classification_report(Y_pred_lr, Y_test)
+    lr_cr = classification_report(Y_test, Y_pred_lr)
     print(lr_cr)
     print(Border)
     
     print("Classification report of Random Forest :")
-    rf_cr = classification_report(Y_pred_rf, Y_test)
+    rf_cr = classification_report(Y_test, Y_pred_rf)
     print(rf_cr)
     print(Border)
 
 
-    print("ROC_AUC Score of KNN :", roc_auc_score(Y_pred_knn, Y_test))
-    print("ROC_AUC Score of Logistic Regression :", roc_auc_score(Y_pred_lr, Y_test))
-    print("ROC_AUC Score of Random Forest :", roc_auc_score(Y_pred_rf, Y_test))
+    print("ROC_AUC Score of KNN :", roc_auc_score(Y_test, Y_pred_knn))
+    print("ROC_AUC Score of Logistic Regression :", roc_auc_score(Y_test, Y_pred_lr))
+    print("ROC_AUC Score of Random Forest :", roc_auc_score(Y_test, Y_pred_rf))
     print(Border)
     
     #------------------------------------------------------------
