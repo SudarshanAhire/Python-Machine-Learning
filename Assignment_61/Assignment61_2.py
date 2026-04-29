@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, classification_report
 
 X = [
     [25000, 600, 200000, 10000, 0],
@@ -17,31 +18,39 @@ X = [
 
 y = [0, 1, 1, 0, 1, 1, 0, 1, 0, 1]
 
+X_train, X_test, Y_train, Y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)
+
 scaler = StandardScaler()
 
-X_scaled = scaler.fit_transform(X)
-
-X_train, X_test, Y_train, Y_test = train_test_split(
-    X_scaled, y, test_size=0.3, random_state=42
-)
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
 model = MLPClassifier(
     hidden_layer_sizes=(5, ),
     activation='relu',
     solver='adam',
-    max_iter=1000,
+    max_iter=2000,
     random_state=42
 )
 
-model.fit(X_train, Y_train)
+model.fit(X_train_scaled, Y_train)
+
+Y_pred = model.predict(X_test_scaled)
+
+print("Actual Output   :", Y_test)
+print("Predicted Output:", Y_pred.tolist())
+
+accuracy = accuracy_score(Y_test, Y_pred)
+print("\nAccuracy of model:", accuracy)
 
 new_applicant = [[55000, 720, 400000, 10000, 1]]
-new_applicant_scaled = scaler.fit_transform(new_applicant)
+new_applicant_scaled = scaler.transform(new_applicant)
 
 prediction = model.predict(new_applicant_scaled)
 
-if prediction == 1:
+if prediction[0] == 1:
     print("Loan Approved")
 else:
-    print("Load Rejected")
-
+    print("Loan rejected")

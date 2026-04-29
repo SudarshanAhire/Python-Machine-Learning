@@ -1,7 +1,13 @@
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score
 
+# ------------------------------------------------------------
+# Step 1: Prepare the dataset
+# [Age, Monthly Charges, Tenure, Complaints, Support Calls]
+# Output: 0 = Stay, 1 = leave
+# ------------------------------------------------------------
 X = [
     [25, 500, 12, 1, 2],
     [30, 700, 24, 0, 1],
@@ -17,31 +23,62 @@ X = [
 
 y = [0, 0, 1, 1, 0, 0, 1, 1, 0, 1]
 
-scaler = StandardScaler()
-
-X_scaled = scaler.fit_transform(X)
-
-X_train, X_test, Y_train, Y_test = train_test_split(
-    X_scaled, y, test_size=0.3, random_state=42
+# ------------------------------------------------------------
+# Step 2: Split dataset
+# stratify=y keeps class ratio balanced
+# ------------------------------------------------------------
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
 )
 
+# ------------------------------------------------------------
+# Step 3: Scale the input data
+# ------------------------------------------------------------
+scaler = StandardScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# ------------------------------------------------------------
+# Step 4: Create FNN model
+# lbfgs often works better for very small datasets
+# ------------------------------------------------------------
 model = MLPClassifier(
-    hidden_layer_sizes=(5, ),
+    hidden_layer_sizes=(5,),
     activation='relu',
     solver='adam',
-    max_iter=1000,
+    max_iter=2000,
     random_state=42
 )
 
-model.fit(X_train, Y_train)
+# ------------------------------------------------------------
+# Step 5: Train the model
+# ------------------------------------------------------------
+model.fit(X_train_scaled, y_train)
 
+# ------------------------------------------------------------
+# Step 6: Predict
+# ------------------------------------------------------------
+y_pred = model.predict(X_test_scaled)
+
+# ------------------------------------------------------------
+# Step 7: Evaluate
+# ------------------------------------------------------------
+print("Actual Output   :", y_test)
+print("Predicted Output:", y_pred.tolist())
+
+accuracy = accuracy_score(y_test, y_pred)
+print("\nAccuracy of model:", accuracy)
+
+# ------------------------------------------------------------
+# Step 8: Predict new student
+# ------------------------------------------------------------
 new_customer = [[46, 1450, 5, 6, 9]]
-new_customer_scaled = scaler.fit_transform(new_customer)
+new_customer_scaled = scaler.transform(new_customer)
 
 prediction = model.predict(new_customer_scaled)
 
-if prediction  == 1:
-    print("Customer Will leave")
+if prediction[0] == 1:
+    print("\nNew Customer Prediction: LEAVE")
 else:
-    print("Customer will stay")
-
+    print("\nNew Customer Prediction: STAY")
